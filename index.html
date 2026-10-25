@@ -6,8 +6,6 @@
 <meta name="theme-color" content="#071018">
 <title>JOIN TELEGRAM</title>
 
-
-
 <style>
 :root{
   --bg:#071018;
@@ -105,45 +103,6 @@ p{
 
 .btn:active{transform:scale(.99); box-shadow:0 6px 18px rgba(124,247,199,.24);}
 
-.meta{
-  margin-top:14px;
-  display:flex;
-  justify-content:space-between;
-  gap:10px;
-  font-size:12px;
-  color:var(--muted);
-}
-
-.stats{
-  margin-top:16px;
-  border-top:1px solid rgba(255,255,255,.06);
-  padding-top:14px;
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:10px;
-}
-
-.stat{
-  background:rgba(255,255,255,.03);
-  border:1px solid rgba(255,255,255,.05);
-  border-radius:16px;
-  padding:12px;
-}
-
-.stat span{
-  display:block;
-  font-size:11px;
-  letter-spacing:.12em;
-  text-transform:uppercase;
-  color:var(--muted);
-}
-
-.stat strong{
-  display:block;
-  margin-top:7px;
-  font-size:24px;
-}
-
 /* subtle popup message styling */
 .toast-msg {
   position: fixed;
@@ -178,17 +137,38 @@ p{
     <h1>JOIN TELEGRAM</h1>
     <p>JOIN TELEGRAM FOR LIVE SURESHOT</p>
 
+    <!-- The button now links directly to your invite link -->
     <a
       class="btn"
-      href="https://t.me/+orrLh7dePj9iOTEx"
+      href=" https://t.me/+orrLh7dePj9iOTEx"
       id="joinBtn"
+      target="_blank"
+      rel="noopener"
     >JOIN TELEGRAM</a>
 
-    <!-- optional subtle toast for feedback (non-intrusive) -->
     <div id="redirectToast" class="toast-msg">↻ redirecting...</div>
   </main>
 </div>
 
+<script>
+  // Capture fbclid for Meta tracking (if you use UTM/FB ads)
+  const params = new URLSearchParams(window.location.search);
+  const fbclid = params.get('fbclid');
+  if (fbclid) {
+    localStorage.setItem('fbclid', fbclid);
+  }
+
+  const joinBtn = document.getElementById('joinBtn');
+  const toast = document.getElementById('redirectToast');
+
+  // Show the toast when clicked
+  joinBtn.addEventListener('click', () => {
+    toast.classList.add('show');
+    setTimeout(() => {
+      toast.classList.remove('show');
+    }, 2000);
+  });
+</script>
 
 </body>
 </html>
